@@ -1,8 +1,7 @@
-import React, { PropTypes, Component } from 'react';
-import { Carousel, WhiteSpace } from 'antd-mobile';
-import styles from './carouselImg.less';
+import React, { Component } from 'react';
+import { Carousel } from 'antd-mobile';
 
-class CarouselImg extends Component {
+export default class CarouselImg extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +13,6 @@ class CarouselImg extends Component {
 
 
   render() {
-    const { list: { carousel } } = this.props;
     return (
       <div>
           <Carousel
@@ -49,4 +47,3 @@ class CarouselImg extends Component {
   }
 }
 
-export default CarouselImg;

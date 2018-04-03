@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { TabBar } from 'antd-mobile';
 import styles from './tabBar.less';
 
@@ -10,7 +10,7 @@ export default class TabBarContainer extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedTabKey != this.state.selectedTabKey) {
+    if (nextProps.selectedTabKey !== this.state.selectedTabKey) {
       this.setState({ selectedTabKey: nextProps.selectedTabKey })
     }
   }
@@ -32,9 +32,8 @@ export default class TabBarContainer extends Component {
         title: item.title,
         key: item.key,
         icon: item.icon,
-        selected: item.selected,
         selectedIcon: item.selectedIcon,
-        selected: item.key === selectedTabKey,
+        selected: item.key == selectedTabKey,
         onPress: () => {
           this.setState({ selectedTabKey: item.key });
           if (onTabPress)

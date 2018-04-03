@@ -1,12 +1,10 @@
 import { connect } from 'dva';
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import { routerRedux } from 'dva/router';
 import { Result } from 'antd-mobile';
-import qs from 'qs';
 import styles from './styles.less';
 
-import { baseRoute, homeRoute } from "../config/app";
 // import 'antd-mobile/dist/antd-mobile.less';
 const NotFound = ({
   dispatch,

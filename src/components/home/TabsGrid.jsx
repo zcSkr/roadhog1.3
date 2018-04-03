@@ -1,10 +1,9 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { Tabs, Grid } from 'antd-mobile';
 import styles from './tabsGrid.less';
-import { baseRoute, homeRoute, svgicon } from "../../config/app";
 
 import Cube from "./Cube";
-class TabsGrid extends Component {
+export default class TabsGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,4 +48,3 @@ class TabsGrid extends Component {
   }
 }
 
-export default TabsGrid;

@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Button } from 'antd-mobile';
 import styles from './tabsGrid.less';
 
-function Cube({
+export default function Cube({
   p,
   i,
   handleButtonClick,
@@ -19,4 +19,3 @@ function Cube({
   );
 };
 
-export default Cube;

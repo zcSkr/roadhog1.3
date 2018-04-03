@@ -1,15 +1,13 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
-import NotFound from './routes/NotFound';
-import { getNavData } from './common/nav';
+import { getNavData } from 'common/nav';
 
-// import IndexPage from './routes/IndexPage';
-// import Home from './routes/Home';
-// import StorePage from './routes/StorePage';
+import NotFound from 'routes/NotFound';
+
 
 function RouterConfig({ history, app }) {
   let navs = getNavData(app)
-  
+
   return (
     <Router history={history}>
       <Switch>
@@ -25,6 +23,6 @@ function RouterConfig({ history, app }) {
 }
 
 export default RouterConfig;
-// <Route path="/" exact component={StorePage} />
-// <Route path="/index" component={IndexPage} />
+// <Route path="/" exact component={IndexPage} />
 // <Route path="/home" component={Home} />
+// <Route path="/not" component={NotFound} />

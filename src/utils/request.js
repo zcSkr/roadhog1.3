@@ -1,9 +1,9 @@
 import fetch from 'dva/fetch';
-import cookie from 'js-cookie';
-import qs from 'qs';
-import moment from 'moment';
+// import cookie from 'js-cookie';
+// import qs from 'qs';
+// import moment from 'moment';
 import { handleErrorCode, handleRequestError } from "./error.js";
-import { rootUrl, platformNo, getToken, authentication } from "../config/app";
+import app from "config/app";
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -18,8 +18,8 @@ function checkStatus(response) {
 function handleUrl(url) {
   //传入_p 
   // url += "&" + qs.stringify(params); 
-  if (url.substr(0, 4) != 'http')
-    url = rootUrl + url;
+  if (url.substr(0, 4) !== 'http')
+    url = app.rootUrl + url;
   return url;
 }
 
@@ -53,18 +53,17 @@ function handleUrl(url) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options) {
-  var token = getToken();
+  var token = app.getToken();
   // var auth = (!!authentication);
   let finalUrl = handleUrl(url);
   const opts = { ...options };
   opts.headers = {
     ...opts.headers,
-    _p: platformNo,
+    _p: app.platformNo,
     // _a: auth,
     _t: token || '', //cookie.get('token')
-    _r: location.pathname + location.search + location.hash, //微信验证通过跳转
+    // _r: location.pathname + location.search + location.hash, //微信验证通过跳转
   };
-  // console.log(location)
   console.log(finalUrl, opts)
   return fetch(finalUrl, opts)
     .then(checkStatus)

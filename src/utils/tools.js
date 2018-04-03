@@ -103,7 +103,7 @@ var typeUtil = (function() {
     })
 
     function isType(obj, type) {
-        return getType(obj) === type;
+        return getType(obj) == type;
     }
 
     function getType(obj) {
@@ -169,7 +169,7 @@ export function isEmptyValue(value) {
 //对象拷贝
 export function objectCopy(obj, deep) {
     //如果obj不是对象，那么直接返回值就可以了
-    if (obj === null || typeof obj !== "object") {
+    if (obj == null || typeof obj !== "object") {
         return obj;
     }　　　　　 //定义需要的局部变脸，根据obj的类型来调整target的类型
     var i, target = typeUtil.isType(obj, "array") ? [] : {},
@@ -177,7 +177,7 @@ export function objectCopy(obj, deep) {
     for (i in obj) {
         value = obj[i];
         valueType = typeUtil.getType(value);　　　　　　　　 //只有在明确执行深复制，并且当前的value是数组或对象的情况下才执行递归复制
-        if (deep && (valueType === "array" || valueType === "object")) {
+        if (deep && (valueType == "array" || valueType == "object")) {
             target[i] = objectCopy(value);
         } else {
             target[i] = value;

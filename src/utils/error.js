@@ -1,5 +1,4 @@
-import qs from 'qs';
-import { rootUrl, routerHistory } from "../config/app"
+import app from "../config/app"
 
 import { Toast, Modal } from 'antd-mobile';
 
@@ -12,12 +11,12 @@ export function handleRequestError(errmsg) {
 }
 export function handleErrorCode(response) {
   const { errcode, errmsg, redirect } = response;
-  if (typeof(errcode) != 'undefined' && errcode != 0) {
+  if (typeof(errcode) !== 'undefined' && errcode !== 0) {
     if (errcode == 4) { //静默跳转 
       redirectTo(redirect);
     } else if (errcode == 3) { //先提示后跳转
       if (!modalVisible) {
-        if (window.location.href != redirect) {
+        if (window.location.href !== redirect) {
           Modal.alert('异常', errmsg, [
             { text: '确定', onPress: () => { redirectTo(redirect); } },
           ]);
@@ -40,10 +39,10 @@ export function handleErrorCode(response) {
 function redirectTo(redirect) {
   modalVisible = false;
   if (redirect.indexOf("http://") >= 0 || redirect.indexOf("https://") >= 0) {
-    if (window.location.href != redirect) {
+    if (window.location.href !== redirect) {
       window.location.href = redirect;
     }
-  } else if (window.location.pathname != redirect) {
-    routerHistory.replace(redirect); //当前url不是登录页面则跳转 
+  } else if (window.location.pathname !== redirect) {
+    app.routerHistory.replace(redirect); //当前url不是登录页面则跳转 
   }
 }

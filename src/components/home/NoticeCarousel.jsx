@@ -1,9 +1,10 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { Carousel } from 'antd-mobile';
 import styles from './noticeCarousel.less';
 
-import SvgIcon from '../../common/component/SvgIcon';
-class NoticeCarousel extends Component {
+import SvgIcon from 'common/component/SvgIcon';
+
+export default class NoticeCarousel extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -48,4 +49,3 @@ class NoticeCarousel extends Component {
   }
 }
 
-export default NoticeCarousel;

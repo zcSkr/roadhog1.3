@@ -1,8 +1,7 @@
-import { rootUrl, baseRoute, homeRoute, logo, name, version, description } from "../config/app";
-import { Toast, Modal } from 'antd-mobile';
+import app from "config/app";
 
 export function config(data) {
-  wx.config({
+  window.wx.config({
     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ'],
     ...data,
   });
@@ -16,13 +15,13 @@ export function config(data) {
 
 export function ready(data, onSuccess, onFail) {
   let shareData = {
-    title: name,
-    desc: description,
-    link: rootUrl + baseRoute + homeRoute,
-    imgUrl: logo,
+    title: app.name,
+    desc: app.description,
+    link: app.rootUrl + app.baseRoute + app.homeRoute,
+    imgUrl: app.logo,
     ...data,
   };
-  wx.ready(function() {
+  window.wx.ready(function() {
     /* 发送给朋友 */
     let data = {
       ...shareData,
@@ -33,17 +32,17 @@ export function ready(data, onSuccess, onFail) {
         if (onFail) onFail(res);
       },
     };
-    wx.onMenuShareAppMessage(data);
+    window.wx.onMenuShareAppMessage(data);
     /* 分享到朋友圈 */
-    wx.onMenuShareTimeline(data);
+    window.wx.onMenuShareTimeline(data);
     /* 分享到QQ */
-    wx.onMenuShareQQ(data);
+    window.wx.onMenuShareQQ(data);
   });
 }
 
 /* 微信支付 */
 function onBridgeReady(data, onSuccess, onFail, onCancel) {
-  WeixinJSBridge.invoke('getBrandWCPayRequest', {
+  window.WeixinJSBridge.invoke('getBrandWCPayRequest', {
     appId: data.appId, //公众号名称，由商户传入
     timeStamp: data.timeStamp, //时间戳
     nonceStr: data.nonceStr, //随机串

@@ -1,4 +1,4 @@
-import * as service_example from '../services/example';
+import * as service_example from 'services/example';
 
 export default {
   namespace: 'example',
@@ -16,7 +16,7 @@ export default {
     setup({ dispatch, history }) { },
   },
   effects: {
-    ["query"]: function* ({ payload, onSuccess, onComplete }, { select, call, put }) {
+    *query({ payload, onSuccess, onComplete }, { select, call, put }) {
       let { data } = yield select(state => state.example);
       let { current, pageSize } = data.pagination;
 
@@ -41,7 +41,7 @@ export default {
         yield put({ type: 'save', payload: { loading: false } });
       }
     },
-    ["activity"]: function* ({ payload, onSuccess, onComplete }, { select, call, put }) {
+    *activity({ payload, onSuccess, onComplete }, { select, call, put }) {
       const { service, params, data } = payload;
       const response = yield call(service_example[service], params, data);
       if (response) {

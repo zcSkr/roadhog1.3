@@ -4,7 +4,7 @@ import { isEqual } from 'underscore';
 
 import styles from './listView.less';
 
-class ListViewContainer extends Component {
+export default class ListViewContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -122,24 +122,3 @@ ListViewContainer.defaultProps = {
   onRefresh: () => {},
 };
 
-ListViewContainer.propTypes = {
-  style: PropTypes.any,
-  className: PropTypes.string,
-  total: PropTypes.any,
-  current: PropTypes.any,
-  pagesize: PropTypes.any,
-  loading: PropTypes.bool,
-  list: PropTypes.array,
-  renderBodyComponent: PropTypes.func,
-  renderHeader: PropTypes.func,
-  renderFooter: PropTypes.func,
-  renderSeparator: PropTypes.func,
-  renderRow: PropTypes.func,
-  rowHasChanged: PropTypes.func,
-  useBodyScroll: PropTypes.bool,
-  onScroll: PropTypes.func,
-  onEndReached: PropTypes.func,
-  onRefresh: PropTypes.func,
-};
-
-export default ListViewContainer;
